@@ -11,15 +11,26 @@
 </head>
 
 <body>
-    <h1 id="lorem">Hello World!</h1>
-
-    We are using Node.js <span id="node-version"></span>, Chromium <span id="chrome-version"></span>, Electron <span id="electron-version"></span>, and Serialport <span id="serialport-version"></span>
+    <h1 id="lorem">ArduTwitch!</h1>
 
     <div id="error"></div>
     <div id="ports"></div>
 
+    <br>
+
     <input type="text" name="com-port" id="com-port" placeholder="Port name">
     <button id="connect-arduino">CONECTAR</button>
+
+    <br>
+
+    <input type="password" name="streamlabs-token" id="streamlabs-token" placeholder="Streamlabs SOCKET TOKEN">
+    <button id="connect-streamlabs">CONECTAR</button>
+
+    <footer>
+        <p>
+            <img src="images/streamlabs.png" alt="streamlabs image" height="300">
+        </p>
+    </footer>
 </body>
 
 <script src="./renderer.js"></script>
