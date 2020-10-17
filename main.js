@@ -16,6 +16,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1200,
         height: 600,
+        icon: path.join(__dirname, 'images/showme.png'),
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(__dirname, 'preload.js')
@@ -30,7 +31,7 @@ function createWindow() {
     }))
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
