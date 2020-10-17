@@ -11,12 +11,15 @@
 </head>
 
 <body>
-    <h1>Hello World!</h1>
+    <h1 id="lorem">Hello World!</h1>
 
     We are using Node.js <span id="node-version"></span>, Chromium <span id="chrome-version"></span>, Electron <span id="electron-version"></span>, and Serialport <span id="serialport-version"></span>
 
     <div id="error"></div>
     <div id="ports"></div>
+
+    <input type="text" name="com-port" id="com-port" placeholder="Port name">
+    <button id="connect-arduino">CONECTAR</button>
 </body>
 
 <script src="./renderer.js"></script>
