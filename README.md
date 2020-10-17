@@ -40,8 +40,13 @@ created by the awesome electron community.
 
 #### License [CC0 1.0 (Public Domain)](LICENSE.md)
 
-## `$ npx @electron-forge/cli import`
+## Add Electron Forge
+`$ npx @electron-forge/cli import`
+Electron Forge is a complete tool for creating, publishing, and installing modern Electron applications.
 
-## `$ npm run make`
+## Create a distributable:
+`$ npm run make`
+
+Electron-forge creates the out folder where your package will be located:
 
 https://www.electronjs.org/docs/tutorial/quick-start#package-and-distribute-the-application
