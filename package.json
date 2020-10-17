@@ -25,7 +25,10 @@
         "electron-rebuild": "^1.8.5"
     },
     "dependencies": {
+        "jquery": "^3.5.1",
+        "node-gyp": "^7.1.2",
         "serialport": "^7.1.5",
+        "socket.io-client": "^2.3.0",
         "tableify": "^1.1.0"
     }
 }
