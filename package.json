@@ -1,34 +1,70 @@
 {
-    "name": "electron-serialport",
-    "version": "1.0.1",
-    "description": "A minimal Electron application with node serialport",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron .",
-        "install": "electron-rebuild"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:johnny-five-io/electron-serialport.git"
-    },
-    "keywords": [
-        "Electron",
-        "quick",
-        "start",
-        "tutorial",
-        "demo"
-    ],
-    "author": "GitHub",
-    "license": "CC0-1.0",
-    "devDependencies": {
-        "electron": "^5.0.5",
-        "electron-rebuild": "^1.8.5"
-    },
-    "dependencies": {
-        "jquery": "^3.5.1",
-        "node-gyp": "^7.1.2",
-        "serialport": "^7.1.5",
-        "socket.io-client": "^2.3.0",
-        "tableify": "^1.1.0"
+  "name": "electron-serialport",
+  "version": "1.0.1",
+  "description": "A minimal Electron application with node serialport",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "install": "electron-rebuild",
+    "build": "electron-packager . ArduTwitch",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:johnny-five-io/electron-serialport.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.53",
+    "@electron-forge/maker-deb": "^6.0.0-beta.53",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.53",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.53",
+    "@electron-forge/maker-zip": "^6.0.0-beta.53",
+    "electron": "^5.0.5",
+    "electron-rebuild": "^1.8.5"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.5.1",
+    "node-gyp": "^7.1.2",
+    "serialport": "^7.1.5",
+    "socket.io-client": "^2.3.0",
+    "tableify": "^1.1.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electron_serialport"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
     }
+  }
 }
