@@ -12,6 +12,8 @@ const $ = require('jquery');
 
 var myArduino = null;
 
+var streamlabs = null;
+
 serialport.list((err, ports) => {
   console.log('ports', ports);
   if (err) {
@@ -48,18 +50,19 @@ $(document).on('click', '#connect-arduino', function(event) {
     $('#connect-arduino').html('DESCONECTAR');
     $('#connect-arduino').attr('id', 'disconnect-arduino');
     $('#com-port').hide();
-    alert('CONECTED SUCCESSFULLY');
+    alert('CONNECTED SUCCESSFULLY');
     setTimeout(function(){
-      myArduino.write('CONECTED SUCCESSFULLY');
+      myArduino.write('CONNECTED SUCCESSFULLY');
     }, 1000)
   });
 
   $('#com-port').val('');
 })
 
-// DISCONECT ARDUINO
+// DISCONNECT ARDUINO
 $(document).on('click', '#disconnect-arduino', function(event) {
   event.preventDefault();
+
   myArduino.close(function (err) {
     $('#disconnect-arduino').html('CONECTAR')
     $('#disconnect-arduino').attr('id', 'connect-arduino');
@@ -75,40 +78,49 @@ function arduMessage(message){
 
 
 $(document).ready(function() {
-  // SETUP WEBSOCKET CONNECTION WITH STREAMLABS API
-  const streamlabs = io(`https://sockets.streamlabs.com?token=${process.env.STREAMLABS_SOCKET_TOKEN}`, {transports: ['websocket']});
 
-  streamlabs.on('connect', () => {console.log('CONNECTION SUCCESS')});
+  $(document).on('click', '#connect-streamlabs', function(event) { 
+    event.preventDefault();
 
-  // Send data when streamlab's webhook is triggered
-  streamlabs.on('event', (eventData) => {
+    // SETUP WEBSOCKET CONNECTION WITH STREAMLABS API
+    streamlabsToken = $('#streamlabs-token').val();
+    streamlabs = io(`https://sockets.streamlabs.com?token=${streamlabsToken}`, {transports: ['websocket']});
 
-    var message = eventData.message[0]
+    streamlabs.on('connect', () => {
+      alert('Conectado con streamlabs');
+      $('#connect-streamlabs').html('CONECTADO')
+    });
 
-    if (eventData.type === 'donation') {
-      name = message.from;
-      amount = message.amount;
-      data = `${name}: $${amount}`
-      arduMessage(data);
-    }
-    if (eventData.for === 'twitch_account') {
-      switch(eventData.type) {
-        case 'follow':
-          data = `FOLLOW: ${message.name}`
-          arduMessage(data);
-          break;
-        case 'subscription':
-          data = `SUB: ${message.name}`
-          arduMessage(data);
-          break;
-        case 'bits':
-          data = `BITS: ${message.name}, ${message.amount}`
-          arduMessage(data);
-          break;
-        default:
-          console.log(message);
+    // Send data when streamlab's webhook is triggered
+    streamlabs.on('event', (eventData) => {
+
+      var message = eventData.message[0]
+
+      if (eventData.type === 'donation') {
+        name = message.from;
+        amount = message.amount;
+        data = `${name}: $${amount}`
+        arduMessage(data);
       }
-    }
-  });
+      if (eventData.for === 'twitch_account') {
+        switch(eventData.type) {
+          case 'follow':
+            data = `FOLLOW: ${message.name}`
+            arduMessage(data);
+            break;
+          case 'subscription':
+            data = `SUB: ${message.name}`
+            arduMessage(data);
+            break;
+          case 'bits':
+            data = `BITS: ${message.name}, ${message.amount}`
+            arduMessage(data);
+            break;
+          default:
+            console.log(message);
+        }
+      }
+    });
+  })
 
 });
