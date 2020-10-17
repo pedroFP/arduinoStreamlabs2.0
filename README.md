@@ -39,3 +39,9 @@ For more example apps, see the
 created by the awesome electron community.
 
 #### License [CC0 1.0 (Public Domain)](LICENSE.md)
+
+## `$ npx @electron-forge/cli import`
+
+## `$ npm run make`
+
+https://www.electronjs.org/docs/tutorial/quick-start#package-and-distribute-the-application
