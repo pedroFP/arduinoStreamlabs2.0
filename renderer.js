@@ -27,7 +27,7 @@ serialport.list((err, ports) => {
     document.getElementById('error').textContent = 'No ports discovered'
   }
 
-  tableHTML = tableify(ports)
+  tableHTML = tableify(ports, {'class': 'table'})
   document.getElementById('ports').innerHTML = tableHTML
 })
 
@@ -47,7 +47,7 @@ $(document).on('click', '#connect-arduino', function(event) {
   });
 
   myArduino.on('open', ()=> {
-    $('#connect-arduino').html('DESCONECTAR');
+    $('#connect-arduino').html('DISCONNECT');
     $('#connect-arduino').attr('id', 'disconnect-arduino');
     $('#com-port').hide();
     alert('CONNECTED SUCCESSFULLY');
@@ -64,7 +64,7 @@ $(document).on('click', '#disconnect-arduino', function(event) {
   event.preventDefault();
 
   myArduino.close(function (err) {
-    $('#disconnect-arduino').html('CONECTAR')
+    $('#disconnect-arduino').html('CONECT')
     $('#disconnect-arduino').attr('id', 'connect-arduino');
     $('#com-port').show();
     alert('Closing Arduino connection');

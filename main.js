@@ -1,7 +1,7 @@
 const electron = require('electron')
-    // Module to control application life.
+// Module to control application life.
 const app = electron.app
-    // Module to create native browser window.
+// Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
@@ -31,7 +31,7 @@ function createWindow() {
     }))
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
@@ -40,6 +40,11 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null
     })
+
+    mainWindow.webContents.on('new-window', function(e, url) {
+        e.preventDefault();
+        electron.shell.openExternal(url);
+    });
 }
 
 // This method will be called when Electron has finished
