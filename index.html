@@ -4,35 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <title>ArduTwitch</title>
-    <style>
-        table { border-collapse: collapse; }
-        table, th, td { border: 1px solid black; }
-    </style>
+    <link rel="stylesheet" href="src/bootstrap4.5.3/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/index.css">
 </head>
 
 <body>
-    <h1 id="lorem">ArduTwitch!</h1>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Ardu-Twitch</span>
+    </nav>
 
-    <div id="error"></div>
-    <div id="ports"></div>
+    <div class="container">
+        <br>
+        <h3>List of COM ports</h3>
+        <div id="error"></div>
+        <div id="ports"></div>
 
-    <br>
+        <br>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="com-port" id="com-port" placeholder="Port name" aria-describedby="basic-addon1">
 
-    <input type="text" name="com-port" id="com-port" placeholder="Port name">
-    <button id="connect-arduino">CONECTAR</button>
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-success" id="connect-arduino">CONECT</button>
+            </div>
+        </div>
 
-    <br>
+        <br>    
+        <div class="input-group mb-3">
+            <input type="password" class="form-control" name="streamlabs-token" id="streamlabs-token" placeholder="Streamlabs SOCKET TOKEN" aria-describedby="basic-addon1">
 
-    <input type="password" name="streamlabs-token" id="streamlabs-token" placeholder="Streamlabs SOCKET TOKEN">
-    <button id="connect-streamlabs">CONECTAR</button>
-
-    <footer>
-        <p>
-            <img src="images/streamlabs.png" alt="streamlabs image" height="300">
-        </p>
-    </footer>
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-success" id="connect-streamlabs">CONECT</button>
+            </div>
+        </div>
+    
+        <footer>
+            <p>
+                <a href="https://streamlabs.com/dashboard#/settings/api-settings" target="_blank">
+                    <img class="img-fluid" src="images/streamlabs.png" alt="streamlabs image">
+                </a>
+            </p>
+        </footer>
+    </div>
 </body>
 
 <script src="./renderer.js"></script>
-
 </html>
