@@ -50,3 +50,6 @@ Electron Forge is a complete tool for creating, publishing, and installing moder
 Electron-forge creates the out folder where your package will be located:
 
 https://www.electronjs.org/docs/tutorial/quick-start#package-and-distribute-the-application
+
+## Arduino
+For the arduino setup there is a file in the `arduino_lcd/` folder where you can upload the sketch to your arduino
