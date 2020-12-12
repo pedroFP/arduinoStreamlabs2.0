@@ -53,3 +53,9 @@ https://www.electronjs.org/docs/tutorial/quick-start#package-and-distribute-the-
 
 ## Arduino
 For the arduino setup there is a file in the `arduino_lcd/` folder where you can upload the sketch to your arduino
+
+## If you prefer to just download the app
+### [Here is the google docs .zip file](https://drive.google.com/file/d/1VaTkC9PiNnGABIZN9o1oCkHJENxNbmFu/view?usp=sharing)
+![img](images/DriveZipFile.png)
+
+### You just need to download it and open the `ArduTwitch.exe` file
